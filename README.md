@@ -1,8 +1,6 @@
-
+<!-- TOC -->
 
 # SMMD
-
-<!-- TOC -->
 
 ## Abstract
 
