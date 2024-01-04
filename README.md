@@ -21,6 +21,13 @@ Stereotypical motor movements (SMMs) are a form of restricted and repetitive beh
 
 
 ## Usage
-> python 
+> python detector.py -video ""
+>
+> -video
+"//ac-s1/Data/Autism Center/recordings/Face camera - eye tracking experiment/control/707289343_2022-08-03-08-51-47 (2).mp4"
+-out
+"Z:\Users\TalBarami\models_outputs"
+-gpu
+1
 
 ## Citation
