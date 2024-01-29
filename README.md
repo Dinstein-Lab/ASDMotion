@@ -1,4 +1,4 @@
-# SMMD
+# ASDPose
 
 1. [Abstract](#abstract)
 2. [Requirements](#requirements)
