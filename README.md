@@ -12,13 +12,25 @@ Stereotypical motor movements (SMMs) are a form of restricted and repetitive beh
 
 ## Requirements
 1. OpenPose
-2. PoseC3D
+2. PoseC3D (via MMAction2)
 
 ## Installation
+### Prepare new environment:
+> conda create -n asdpose python==3.9
+### Install required packages:
+> conda install esri::mmcv-full
+> conda install conda-forge::ffmpeg
+> conda install conda-forge::ffmpeg-python
+> conda install conda-forge::omegaconf
+> conda install anaconda::ipython
+> conda install anaconda::seaborn
+> conda install conda-forge::scikit-learn
 
-### Openpose
-> git clone
+### Install OpenPose:
+[Follow the instructions]([https://github.com/open-mmlab/mmaction2](https://github.com/CMU-Perceptual-Computing-Lab/openpose))
 
+### Install MMAction2:
+[Follow the instructions](https://github.com/open-mmlab/mmaction2)
 
 ## Usage
 > python detector.py -video ""
