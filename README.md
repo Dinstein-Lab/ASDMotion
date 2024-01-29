@@ -18,6 +18,7 @@ Stereotypical motor movements (SMMs) are a form of restricted and repetitive beh
 ### Prepare new environment:
 > conda create -n asdpose python==3.9
 ### Install required packages:
+'''bash
 > conda install esri::mmcv-full
 > conda install conda-forge::ffmpeg
 > conda install conda-forge::ffmpeg-python
@@ -25,6 +26,7 @@ Stereotypical motor movements (SMMs) are a form of restricted and repetitive beh
 > conda install anaconda::ipython
 > conda install anaconda::seaborn
 > conda install conda-forge::scikit-learn
+'''
 
 ### Install OpenPose:
 [Follow the instructions]([https://github.com/open-mmlab/mmaction2](https://github.com/CMU-Perceptual-Computing-Lab/openpose))
