@@ -16,7 +16,9 @@ Stereotypical motor movements (SMMs) are a form of restricted and repetitive beh
 
 ## Installation
 ### Prepare new environment:
+```console
 > conda create -n asdpose python==3.9
+```
 ### Install required packages:
 ```console
 > conda install esri::mmcv-full
@@ -35,13 +37,7 @@ Stereotypical motor movements (SMMs) are a form of restricted and repetitive beh
 [Follow the instructions](https://github.com/open-mmlab/mmaction2)
 
 ## Usage
-> python detector.py -video ""
->
-> -video
-"//ac-s1/Data/Autism Center/recordings/Face camera - eye tracking experiment/control/707289343_2022-08-03-08-51-47 (2).mp4"
--out
-"Z:\Users\TalBarami\models_outputs"
--gpu
-1
-
+```console
+> python detector.py -cfg "<path_to_config_file>" -video "<path_to_video_file>" -out "<path_to_outputs_directory>"
+```
 ## Citation
