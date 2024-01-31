@@ -1,4 +1,4 @@
-![ASDPose](/resources/logo_jordi.webp "ASDPose" =100x100)
+![ASDPose](/resources/logo_jordi.webp =100x100 "ASDPose")
 
 # ASDPose
 
