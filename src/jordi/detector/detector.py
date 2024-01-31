@@ -5,7 +5,7 @@ from os import path as osp
 import numpy as np
 import pandas as pd
 
-from jordi.detector.aggregator import aggregate
+from jordi.pipeline.aggregator import aggregate
 from jordi.logger import LogManager
 from jordi.utils import RESOURCES_ROOT, read_pkl
 

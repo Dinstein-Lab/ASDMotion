@@ -105,3 +105,7 @@ def read_json(file):
 def write_json(j, dst):
     with open(dst, 'w') as f:
         json.dump(j, f)
+
+if __name__ == '__main__':
+    cfg2 = load_config(osp.join(RESOURCES_ROOT, 'configs', 'config.yaml'))
+    print()

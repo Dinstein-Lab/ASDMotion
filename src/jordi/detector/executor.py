@@ -22,19 +22,6 @@ def predict_video(vt, vpath, p=None):
     delta = t - s
     logger.info(f'Total {int(delta // 3600):02d}:{int((delta % 3600) // 60):02d}:{delta % 60:05.2f} for {v}')
 
-config = {
-    'sequence_length': 200,
-    'step_size': 30,
-    'model_name': '',
-    'child_detection': True,
-    'classification_threshold': 0.85,
-    'num_person_in': 5,
-    'num_person_out': 5,
-    'open_pose_path': '',
-    'mmaction_path': '',
-    'mmlab_python_path': r'C:\Users\owner\anaconda3\envs\open-mmlab\python.exe'
-}
-
 
 if __name__ == '__main__':
     parser = ArgumentParser()

@@ -1,0 +1,10 @@
+sequence_length: 200
+step_size: 30
+model_name: 'jordi'
+child_detection: true
+classification_threshold: 0.85
+num_person_in: 5
+num_person_out: 5
+open_pose_path: <Path to openpose root directory>
+mmaction_path: <Path to mmaction2 root directory>
+mmlab_python_path: <Path to open-mmlab python executable>

@@ -1,23 +1,22 @@
 from os import path as osp
 
 import numpy as np
-from child_detector.detector import ChildDetector
 from mmcv import Config
 
+from jordi.child_detector.child_detector import ChildDetector
 from jordi.logger import LogManager
 from jordi.pipeline.openpose_executor import OpenposeInitializer
 from jordi.pipeline.skeleton_layout import BODY_25_LAYOUT, COCO_LAYOUT
 from jordi.pipeline.splitter import Splitter
 from jordi.utils import read_pkl, write_pkl, get_video_properties, init_directories, create_config, save_config, RESOURCES_ROOT
 
-CFG_DIR = osp.join(RESOURCES_ROOT, 'configs')
+CFG_DIR = osp.join(RESOURCES_ROOT, 'mmaction_template')
 logger = LogManager.APP_LOGGER
 
 class VideoTransformer:
     def __init__(self, work_dir, binary_model_name, openpose_root, detect_child, sequence_length, step_size, gpu_id, num_person_in, num_person_out):
         self.default_cfgs = {
             'binary': osp.join(CFG_DIR, 'binary_cfg_template.py'),
-            'multiclass': osp.join(CFG_DIR, 'multiclass_cfg_template.py')
         }
         self.work_dir = osp.join(work_dir)
         self.gpu_id = gpu_id
@@ -72,7 +71,6 @@ class VideoTransformer:
         basename = video_info['name']
         dataset_output = video_info['dataset_path']
 
-        # if not osp.exists(dataset_output):
         logger.info(f'Creating new skeleton for {basename}')
         skeleton = self._create_skeleton(video_info)
         logger.info('Writing Dataset.')
