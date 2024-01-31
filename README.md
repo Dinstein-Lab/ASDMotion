@@ -64,17 +64,17 @@ mmlab_python_path: Path to open-mmlab python executable.
 ### Outputs:
 A directory with the name of the input video will be created. Inside it:
 ```yaml
-jordi
-|- jordi.pth
-  |- <video_name>_annotations.csv - A table with start time, end time, movement type and stereotypical score of each segment.
-  |- <video_name>_conclusion.csv - Summarize the annotations table with the sum of lengths of SMMs, the proportion of SMMs, the number of SMM segments, and the number of SMMs per minute.
-  |- <video_name>_exec_info.yaml - Configuration file containing execution information.
-  |- <video_name>_binary_config.py - Configuration file used to execute PoseC3D.
-  |- <video_name>_predictions.pkl & <video_name>_scores.pkl - A per-sequence scores produced by PoseC3D for each sequence of <sequence_length> length while iterating over the entire video with step size <step_size>.
-  |- <video_name>_dataset_<sequence_length>.pkl - Skeleton sequences that were fed to PoseC3D.
-|- <video_name>raw.pkl - The skeleton sequence openpose produces.
-|- <video_name>.pkl - The skeleton sequence after the matching process with the child detection module.
-<video_name>_detections.pkl - Child detection outputs, as produced by the child detection module (Optional).
+├── jordi
+│   ├── jordi.pth
+│   │   ├──  <video_name>_annotations.csv - A table with start time, end time, movement type and stereotypical score of each segment.
+│   │   ├──  <video_name>_conclusion.csv - Summarize the annotations table with the sum of lengths of SMMs, the proportion of SMMs, the number of SMM segments, and the number of SMMs per minute.
+│   │   ├──  <video_name>_exec_info.yaml - Configuration file containing execution information.
+│   │   ├──  <video_name>_binary_config.py - Configuration file used to execute PoseC3D.
+│   │   ├──  <video_name>_predictions.pkl & <video_name>_scores.pkl - A per-sequence scores produced by PoseC3D for each sequence of <sequence_length> length while iterating over the entire video with step size <step_size>.
+│   │   └──  <video_name>_dataset_<sequence_length>.pkl - Skeleton sequences that were fed to PoseC3D.
+│   ├── <video_name>raw.pkl - The skeleton sequence openpose produces.
+│   └── <video_name>.pkl - The skeleton sequence after the matching process with the child detection module.
+└── <video_name>_detections.pkl - Child detection outputs, produced by the child detection module (Optional).
 ```
 
 ## Citation
