@@ -40,7 +40,7 @@ Stereotypical motor movements (SMMs) are a form of restricted and repetitive beh
 [Follow the instructions](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
 
 ### Install MMAction2:
-[Follow the instructions](https://github.com/open-mmlab/mmaction2)
+[Follow the instructions (Forked repository)](https://github.com/TalBarami/mmaction2)
 
 ## Usage
 ```console
