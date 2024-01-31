@@ -1,4 +1,6 @@
-<img src="/resources/logo_jordi.webp" alt="ASDPose" width="200"/>
+<center>
+  <img src="/resources/logo_jordi.webp" alt="ASDPose" width="400"/>
+</center>
 
 # ASDPose
 
