@@ -1,3 +1,5 @@
+![ASDPose](/resources/logo_jordi.webp "ASDPose")
+
 # ASDPose
 
 1. [Abstract](#abstract)
