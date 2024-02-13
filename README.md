@@ -34,6 +34,7 @@ Stereotypical motor movements (SMMs) are a form of restricted and repetitive beh
 > conda install anaconda::ipython
 > conda install anaconda::seaborn
 > conda install conda-forge::scikit-learn
+> conda install anaconda::openpyxl 
 ```
 
 ### Install OpenPose:
