@@ -16,9 +16,13 @@
 Stereotypical motor movements (SMMs) are a form of restricted and repetitive behaviors (RRBs) that are prevalent in individuals with Autism Spectrum Disorders (ASD). Previous studies attempting to quantify SMMs in ASD have relied on coarse and subjective reports or on manual annotation of video recordings. Here, we demonstrate the utility of a novel open-source AI algorithm that can analyze video recordings of children and automatically identify segments containing stereotypical movements.
 
 ## Requirements
-1. Python 3.9
-2. OpenPose
-3. PoseC3D (via MMAction2)
+This code was tested using:
+1. Windows 10/11
+2. Python 3.9
+3. Pytorch 1.13
+4. CUDA 11.7
+
+Other OS/Python distributions are expected to work.
 
 ## Installation
 ### Prepare new environment:
@@ -38,17 +42,36 @@ Stereotypical motor movements (SMMs) are a form of restricted and repetitive beh
 ```
 
 ### Install OpenPose:
-[Follow the instructions](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
+This repository utilizes OpenPose for the extraction of the skeletal representation of individuals per video frame.
+The OpenPose demo version is sufficient for this task. For installation, [follow the instructions](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/01_demo.md)
 
 ### Install MMAction2:
 [Follow the instructions (Forked repository)](https://github.com/TalBarami/mmaction2)
 
-## Usage
+
+### Install the child detector (Optional)
+The child detector allows more accurate detections when the video contains multiple adults and one child.
 ```console
-> python detector.py -cfg "<path_to_config_file>" -video "<path_to_video_file>" -out "<path_to_outputs_directory>"
+> git clone https://github.com/TalBarami/Child-Detector.git
+> cd Child-Detector
+> python setup.py develop
+```
+
+## Usage
+We provide both GUI and command-line applications.
+For GUI, execute:
+```console
+> python src/jordi/app/main_app.py
+```
+Ensure the configuration file `/resources/config/config.yaml` contains the paths to OpenPose and MMAction2.
+
+For CMD, execute:
+```console
+> python src/jordi/detector/detector.py -cfg "<path_to_config_file>" -video "<path_to_video_file>" -out "<path_to_outputs_directory>"
 ```
 
 ### Configuration File:
+Each execution of ASDPose depends on a set of customizable configurations:
 ```yaml
 sequence_length: Length of each sequence to be predicted by PoseC3D. Default 200.
 step_size: Step size of the sliding window that passes on the entire video. Default 30.
@@ -61,6 +84,7 @@ open_pose_path: Path to openpose root directory.
 mmaction_path: Path to mmaction2 root directory.
 mmlab_python_path: Path to open-mmlab python executable.
 ```
+If you use this repository for the first time, make sure to update the 
 
 ### Outputs:
 A directory with the name of the input video will be created. Inside it:
