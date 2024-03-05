@@ -29,9 +29,10 @@ class Predictor:
     def _predict(self, cfg_path, model_path, out_path):
         if not osp.exists(out_path):
             out_exec = f'\\{out_path}' if out_path.startswith('\\\\') else out_path
-            cmd = f'"{self.mmlab_python}" "{osp.join(self.mmaction_root, "tools", "test.py")}" "{cfg_path}" "{model_path}" --out "{out_exec}"'
+            cmd = f'python "{osp.join(self.mmaction_root, "tools", "test.py")}" "{cfg_path}" "{model_path}" --out "{out_exec}"'
             if self.gpu_id is not None:
                 cmd += f" --gpu-ids {self.gpu_id}"
+            cmd = f'{osp.join(RESOURCES_ROOT, "run_in_env.bat")} {cmd}'.replace('\\', '/')
             logger.info(f'Executing: {cmd}')
             subprocess.check_call(shlex.split(cmd), universal_newlines=True)
             logger.info('Prediction complete successfully.')

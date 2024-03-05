@@ -60,6 +60,8 @@ class VideoTransformer:
                 skeleton['child_detected'] = np.zeros(T)
                 skeleton['child_bbox'] = np.zeros((T, 4))
         cids = skeleton['child_ids']
+        if np.all(cids == -1):
+            raise ValueError(f'No children detected in {video_info["name"]}')
         valid_frames = cids[cids != -1].shape[0]
         last_valid_frame = int(np.where(cids != -1)[0][-1])
         video_info['properties']['valid_frames'] = valid_frames
@@ -84,18 +86,17 @@ class VideoTransformer:
 
     def init_cfg(self, video_info, name, ann_file, model_type):
         logger.info(f'Initializing cfg for {name}')
-        cfg = Config.fromfile(self.default_cfgs[model_type])
-        if self.detect_child:
-            for k in ['train', 'val', 'test']:
-                cfg[f'{k}_pipeline'] = [{'type': 'ChildDetect'}] + cfg[f'{k}_pipeline']
-        cfg['work_dir'] = video_info['jordi_dir']
-        cfg['ann_file'] = ann_file
-        cfg.data['train']['dataset']['pipeline'] = cfg[f'train_pipeline']
-        for k in ['val', 'test']:
-            cfg.data[k]['ann_file'] = cfg['ann_file']
-            cfg.data[k]['pipeline'] = cfg[f'{k}_pipeline']
-        cfg.dump(video_info[f'{model_type}_cfg_path'])
-
+        with open(self.default_cfgs['binary']) as f:
+            lines = f.readlines()
+        lines[28] = f'ann_file = "{ann_file}"\n'
+        lines[110] = f'gpu_ids = [{self.gpu_id}]\n'
+        lines[129] = f'work_dir = "{video_info["jordi_dir"]}"\n'
+        s = 'dict(type=\'ChildDetect\'),'
+        for i in [31, 49, 65]:
+            lines[i] += f'    {s}\n'
+        cfg = ''.join(lines)
+        with open(video_info[f'{model_type}_cfg_path'], 'w') as f:
+            f.write(cfg)
     def prepare_environment(self, video_path):
         fullname = osp.basename(video_path)
         name, ext = osp.splitext(fullname)
