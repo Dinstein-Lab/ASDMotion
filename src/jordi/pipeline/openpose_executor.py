@@ -95,13 +95,13 @@ class OpenposeInitializer:
             if self.as_img_dir:
                 img_out_path = osp.join(process_dir, 'img_dirs')
                 self._video2img(src_path, img_out_path)
+                if frame_count is None or length is None:
+                    frame_count = len(os.listdir(img_out_path))
+                    length = frame_count / fps
                 self._exec_openpose(img_out_path, openpose_output_path, source_type=SkeletonSource.IMAGE)
             else:
                 self._exec_openpose(src_path, openpose_output_path, source_type=source_type)
             data = self.openpose_to_json(openpose_output_path)
-            adj = int(frame_count - len(data))
-            if adj != 0:
-                logger.warning(f'Skeleton {basename} requires adjustments: video={frame_count}, T={len(data)}')
             skeleton = {
                 'name': basename,
                 'video_path': src_path,
@@ -109,7 +109,6 @@ class OpenposeInitializer:
                 'fps': fps,
                 'frame_count': frame_count,
                 'length_seconds': length,
-                'adjust': adj,
                 'data': data,
             }
             if result_skeleton_dir:
