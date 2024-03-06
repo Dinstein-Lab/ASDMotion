@@ -31,14 +31,7 @@ Other OS/Python distributions are expected to work.
 ```
 ### Install required packages:
 ```console
-> conda install esri::mmcv-full
-> conda install conda-forge::ffmpeg
-> conda install conda-forge::ffmpeg-python
-> conda install conda-forge::omegaconf
-> conda install anaconda::ipython
-> conda install anaconda::seaborn
-> conda install conda-forge::scikit-learn
-> conda install anaconda::openpyxl 
+> pip install -r requirements.txt
 ```
 
 ### Install OpenPose:
