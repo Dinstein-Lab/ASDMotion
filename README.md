@@ -15,7 +15,7 @@
 ## Abstract
 This repository holds the codebase, dataset and models for the paper:
 
-**Automated identification and quantification of stereotypical movements from video recordings of children with ASD**, Barami Tal, Manelis-Baram Liora, Kaiser Hadas, 2024. [Arxiv Preprint](https://www.biorxiv.org/content/early/2024/03/06/2024.03.02.582828)
+**Automated identification and quantification of stereotypical movements from video recordings of children with ASD**, Barami Tal, Manelis-Baram Liora, Kaiser Hadas, Dinstein Ilan; 2024. [Arxiv Preprint](https://www.biorxiv.org/content/early/2024/03/06/2024.03.02.582828)
 
 Stereotypical motor movements (SMMs) are a form of restricted and repetitive behaviors (RRBs) that are prevalent in individuals with Autism Spectrum Disorders (ASD). Previous studies attempting to quantify SMMs in ASD have relied on coarse and subjective reports or on manual annotation of video recordings. Here, we demonstrate the utility of a novel open-source AI algorithm that can analyze video recordings of children and automatically identify segments containing stereotypical movements.
 
