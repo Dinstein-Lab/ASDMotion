@@ -5,9 +5,9 @@ from os import path as osp
 import numpy as np
 import pandas as pd
 
-from asdpose.pipeline.aggregator import aggregate
-from asdpose.logger import LogManager
-from asdpose.utils import RESOURCES_ROOT, read_pkl
+from asdmotion.pipeline.aggregator import aggregate
+from asdmotion.logger import LogManager
+from asdmotion.utils import RESOURCES_ROOT, read_pkl
 
 MODELS_DIR = osp.join(RESOURCES_ROOT, 'models')
 logger = LogManager.APP_LOGGER
@@ -56,7 +56,7 @@ class Predictor:
         return df
 
     def _model_predictions(self, video_info):
-        logger.info(f'Collecting ASDPose predictions for {video_info["name"]}')
+        logger.info(f'Collecting ASDMotion predictions for {video_info["name"]}')
         scores_path = video_info['scores_path']
         if osp.exists(scores_path):
             df = pd.read_csv(scores_path)

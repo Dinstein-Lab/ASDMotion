@@ -1,6 +1,6 @@
 import numpy as np
 
-from asdpose.utils import EPSILON
+from asdmotion.utils import EPSILON
 
 
 def get_box(row):

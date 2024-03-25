@@ -1,7 +1,7 @@
 import logging
 from os import path as osp
 
-from asdpose.utils import RESOURCES_ROOT
+from asdmotion.utils import RESOURCES_ROOT
 
 
 def init_logger(log_name, log_path=None):

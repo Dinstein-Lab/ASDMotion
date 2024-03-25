@@ -3,12 +3,12 @@ from os import path as osp
 import numpy as np
 from mmcv import Config
 
-from asdpose.child_detector.child_detector import ChildDetector
-from asdpose.logger import LogManager
-from asdpose.pipeline.openpose_executor import OpenposeInitializer
-from asdpose.pipeline.skeleton_layout import BODY_25_LAYOUT, COCO_LAYOUT
-from asdpose.pipeline.splitter import Splitter
-from asdpose.utils import read_pkl, write_pkl, get_video_properties, init_directories, create_config, save_config, RESOURCES_ROOT
+from asdmotion.child_detector.child_detector import ChildDetector
+from asdmotion.logger import LogManager
+from asdmotion.pipeline.openpose_executor import OpenposeInitializer
+from asdmotion.pipeline.skeleton_layout import BODY_25_LAYOUT, COCO_LAYOUT
+from asdmotion.pipeline.splitter import Splitter
+from asdmotion.utils import read_pkl, write_pkl, get_video_properties, init_directories, create_config, save_config, RESOURCES_ROOT
 
 CFG_DIR = osp.join(RESOURCES_ROOT, 'mmaction_template')
 logger = LogManager.APP_LOGGER
@@ -101,7 +101,7 @@ class VideoTransformer:
         fullname = osp.basename(video_path)
         name, ext = osp.splitext(fullname)
         work_dir = osp.join(self.work_dir, name)
-        jordi_dir = osp.join(work_dir, 'asdpose')
+        jordi_dir = osp.join(work_dir, 'asdmotion')
         model_dir = osp.join(jordi_dir, self.binary_model_name)
         resolution, fps, frame_count, length = get_video_properties(video_path)
         video_info = {

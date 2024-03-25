@@ -10,9 +10,9 @@ import cv2
 import numpy as np
 from tqdm import tqdm
 
-from asdpose.logger import LogManager
-from asdpose.pipeline.skeleton_layout import convert_layout, BODY_25_LAYOUT, COCO_LAYOUT
-from asdpose.utils import init_directories, get_video_properties, write_pkl, read_json
+from asdmotion.logger import LogManager
+from asdmotion.pipeline.skeleton_layout import convert_layout, BODY_25_LAYOUT, COCO_LAYOUT
+from asdmotion.utils import init_directories, get_video_properties, write_pkl, read_json
 
 logger = LogManager.APP_LOGGER
 

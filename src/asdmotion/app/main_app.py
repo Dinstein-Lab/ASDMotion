@@ -6,8 +6,8 @@ import shutil
 from tkinter import Tk, PanedWindow, Listbox, BOTH, Button, TOP, END, NORMAL, DISABLED, Checkbutton, BooleanVar
 from tkinter.filedialog import askopenfilenames
 
-from asdpose.logger import LogManager
-from asdpose.utils import PROJECT_ROOT
+from asdmotion.logger import LogManager
+from asdmotion.utils import PROJECT_ROOT
 
 logger = LogManager.APP_LOGGER
 
@@ -16,10 +16,10 @@ class Display:
     video_types = [('Video files', '*.avi;*.mp4')]
 
     def __init__(self):
-        self.main_path = osp.join(PROJECT_ROOT, 'src', 'asdpose', 'detector', 'main.py')
+        self.main_path = osp.join(PROJECT_ROOT, 'src', 'asdmotion', 'detector', 'main.py')
         self.python_path = shutil.which('python')
         self.root = Tk()
-        self.root.title('ASDPose')
+        self.root.title('ASDMotion')
         self.video_paths = []
 
         self.browse_panel = panel = PanedWindow(self.root, name='browsePanel')
@@ -30,7 +30,7 @@ class Display:
         self.child_detect = BooleanVar()
         self.child_detect_button = Checkbutton(self.browse_panel, text='Child Detection', variable=self.child_detect)
         self.exec_jordi = BooleanVar()
-        self.exec_jordi_button = Checkbutton(self.browse_panel, text='ASDPose', variable=self.exec_jordi)
+        self.exec_jordi_button = Checkbutton(self.browse_panel, text='ASDMotion', variable=self.exec_jordi)
         # self.exec_barni = BooleanVar()
         # self.exec_barni_button = Checkbutton(self.browse_panel, text='BARNI', variable=self.exec_barni)
 

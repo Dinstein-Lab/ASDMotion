@@ -4,9 +4,9 @@ from os import path as osp
 import torch
 from torch.utils.data import DataLoader
 
-from asdpose.child_detector.iterable_video_dataset import IterableVideoDataset
-from asdpose.child_detector.skeleton_matcher import SkeletonMatcher
-from asdpose.utils import RESOURCES_ROOT
+from asdmotion.child_detector.iterable_video_dataset import IterableVideoDataset
+from asdmotion.child_detector.skeleton_matcher import SkeletonMatcher
+from asdmotion.utils import RESOURCES_ROOT
 
 
 class ChildDetector:

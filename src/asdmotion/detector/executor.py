@@ -4,10 +4,10 @@ from os import path as osp
 
 from omegaconf import OmegaConf
 
-from asdpose.detector.detector import Predictor
-from asdpose.detector.preprocess import VideoTransformer
-from asdpose.logger import LogManager
-from asdpose.utils import load_config
+from asdmotion.detector.detector import Predictor
+from asdmotion.detector.preprocess import VideoTransformer
+from asdmotion.logger import LogManager
+from asdmotion.utils import load_config
 
 logger = LogManager.APP_LOGGER
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
         raise FileNotFoundError(f'Video path {video_path} does not exist.')
     work_dir = cfg.out_path
 
-    logger.info(f'Executing ASDPose on {video_path}. Results will be saved to {work_dir}')
+    logger.info(f'Executing ASDMotion on {video_path}. Results will be saved to {work_dir}')
     vt = VideoTransformer(work_dir, cfg.model_name, cfg.open_pose_path, cfg.child_detection, cfg.sequence_length, cfg.step_size, cfg.gpu, cfg.num_person_in, cfg.num_person_out)
     p = Predictor(work_dir, cfg.model_name, cfg.classification_threshold, ['NoAction', 'Stereotypical'], cfg.mmlab_python_path, cfg.mmaction_path, cfg.gpu)
     logger.info(f'Annotating: {video_path}')
