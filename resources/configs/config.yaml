@@ -1,6 +1,6 @@
 sequence_length: 200
 step_size: 30
-model_name: 'jordi'
+model_name: 'asdpose'
 child_detection: true
 classification_threshold: 0.85
 num_person_in: 5

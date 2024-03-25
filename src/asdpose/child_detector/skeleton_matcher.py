@@ -1,7 +1,7 @@
 import numpy as np
 from tqdm import tqdm
 
-from jordi.child_detector.utils import bounding_box, get_box, get_iou, find_nearest
+from asdpose.child_detector.utils import bounding_box, get_box, get_iou, find_nearest
 
 
 def get_boxes(kp, score):

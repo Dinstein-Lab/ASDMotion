@@ -1,6 +1,6 @@
 import numpy as np
 
-from jordi.utils import EPSILON
+from asdpose.utils import EPSILON
 
 
 def get_box(row):

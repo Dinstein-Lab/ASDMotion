@@ -5,9 +5,9 @@ from os import path as osp
 import numpy as np
 import pandas as pd
 
-from jordi.pipeline.aggregator import aggregate
-from jordi.logger import LogManager
-from jordi.utils import RESOURCES_ROOT, read_pkl
+from asdpose.pipeline.aggregator import aggregate
+from asdpose.logger import LogManager
+from asdpose.utils import RESOURCES_ROOT, read_pkl
 
 MODELS_DIR = osp.join(RESOURCES_ROOT, 'models')
 logger = LogManager.APP_LOGGER
@@ -56,7 +56,7 @@ class Predictor:
         return df
 
     def _model_predictions(self, video_info):
-        logger.info(f'Collecting JORDI\'s predictions for {video_info["name"]}')
+        logger.info(f'Collecting ASDPose predictions for {video_info["name"]}')
         scores_path = video_info['scores_path']
         if osp.exists(scores_path):
             df = pd.read_csv(scores_path)

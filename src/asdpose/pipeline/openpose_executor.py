@@ -10,9 +10,9 @@ import cv2
 import numpy as np
 from tqdm import tqdm
 
-from jordi.logger import LogManager
-from jordi.pipeline.skeleton_layout import convert_layout, BODY_25_LAYOUT, COCO_LAYOUT
-from jordi.utils import init_directories, get_video_properties, write_pkl, read_json
+from asdpose.logger import LogManager
+from asdpose.pipeline.skeleton_layout import convert_layout, BODY_25_LAYOUT, COCO_LAYOUT
+from asdpose.utils import init_directories, get_video_properties, write_pkl, read_json
 
 logger = LogManager.APP_LOGGER
 
