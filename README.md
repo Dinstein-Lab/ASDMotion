@@ -40,10 +40,12 @@ Other OS/Python distributions are expected to work.
 ```
 
 ### Install OpenPose:
-This repository utilizes OpenPose for the extraction of the skeletal representation of individuals per video frame.
+This repository utilizes OpenPose to extract the skeletal representation of individuals per video frame.
 The OpenPose demo version is sufficient for this task. For installation, [follow the instructions](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/01_demo.md)
 
 ### Install MMAction2:
+The SMM identification model is based on PoseC3D, a skeleton-based action recognition model. 
+For our setup, it is sufficient to clone the repository and install its dependencies on a **separate** environment.
 [Follow the instructions (Forked repository)](https://github.com/TalBarami/mmaction2)
 
 
