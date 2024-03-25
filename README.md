@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="/resources/logo_jordi.webp" alt="ASDPose" width="500"/>
+  <img src="/resources/logo_jordi.webp" alt="ASDMotion" width="500"/>
 </p>
 
 
-# ASDPose
+# ASDMotion
 
 1. [Abstract](#abstract)
 2. [Requirements](#requirements)
@@ -27,7 +27,7 @@ Other OS/Python distributions are expected to work.
 ## Installation
 ### Prepare new environment:
 ```console
-> conda create -n asdpose python==3.9
+> conda create -n asdmotion python==3.9
 ```
 ### Install required packages:
 ```console
@@ -64,7 +64,7 @@ For CMD, execute:
 ```
 
 ### Configuration File:
-Each execution of ASDPose depends on a set of customizable configurations:
+Each execution of ASDMotion depends on a set of customizable configurations:
 ```yaml
 sequence_length: Length of each sequence to be predicted by PoseC3D. Default 200.
 step_size: Step size of the sliding window that passes on the entire video. Default 30.
