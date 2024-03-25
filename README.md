@@ -96,3 +96,16 @@ A directory with the name of the input video will be created. Inside it:
 ```
 
 ## Citation
+If you find this project useful in your research, please consider cite:
+```BibTeX
+@article {Barami2024.03.02.582828,
+	author = {Tal Barami and Liora Manelis-Baram and Hadas Kaiser and Michal Ilan and Aviv Slobodkin and Ofri Hadashi and Dor Hadad and Danel Waissengreen and Tanya Nitzan and Idan Menashe and Analya Michaelovsky and Michal Begin and Ditza A. Zachor and Yair Sadaka and Judah Koler and Dikla Zagdon and Gal Meiri and Omri Azencot and Andrei Sharf and Ilan Dinstein},
+	title = {Automated identification and quantification of stereotypical movements from video recordings of children with ASD},
+	elocation-id = {2024.03.02.582828},
+	year = {2024},
+	doi = {10.1101/2024.03.02.582828},
+	URL = {https://www.biorxiv.org/content/early/2024/03/06/2024.03.02.582828},
+	eprint = {https://www.biorxiv.org/content/early/2024/03/06/2024.03.02.582828.full.pdf},
+	journal = {bioRxiv}
+}
+```
