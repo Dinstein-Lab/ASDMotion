@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="/resources/logo_jordi.webp" alt="ASDPose" width="500"/>
+  <img src="/resources/logo_jordi.webp" alt="ASDMotion" width="500"/>
 </p>
 
 
-# ASDPose
+# ASDMotion
 
 1. [Abstract](#abstract)
 2. [Requirements](#requirements)
@@ -13,7 +13,12 @@
 
 
 ## Abstract
+This repository holds the codebase, dataset and models for the paper:
+
+**Automated identification and quantification of stereotypical movements from video recordings of children with ASD**, Barami Tal, Manelis-Baram Liora, Kaiser Hadas, Dinstein Ilan; 2024. [Arxiv Preprint.](https://www.biorxiv.org/content/early/2024/03/06/2024.03.02.582828)
+
 Stereotypical motor movements (SMMs) are a form of restricted and repetitive behaviors (RRBs) that are prevalent in individuals with Autism Spectrum Disorders (ASD). Previous studies attempting to quantify SMMs in ASD have relied on coarse and subjective reports or on manual annotation of video recordings. Here, we demonstrate the utility of a novel open-source AI algorithm that can analyze video recordings of children and automatically identify segments containing stereotypical movements.
+
 
 ## Requirements
 This code was tested using:
@@ -27,7 +32,7 @@ Other OS/Python distributions are expected to work.
 ## Installation
 ### Prepare new environment:
 ```console
-> conda create -n asdpose python==3.9
+> conda create -n asdmotion python==3.9
 ```
 ### Install required packages:
 ```console
@@ -35,10 +40,12 @@ Other OS/Python distributions are expected to work.
 ```
 
 ### Install OpenPose:
-This repository utilizes OpenPose for the extraction of the skeletal representation of individuals per video frame.
-The OpenPose demo version is sufficient for this task. For installation, [follow the instructions](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/01_demo.md)
+This repository utilizes OpenPose to extract the skeletal representation of individuals per video frame.
+The OpenPose demo version is sufficient for this task. For installation, [follow the instructions.](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/01_demo.md)
 
 ### Install MMAction2:
+The SMM identification model is based on PoseC3D, a skeleton-based action recognition model. 
+For our setup, it is sufficient to clone the repository and install its dependencies on a **separate** environment.
 [Follow the instructions (Forked repository)](https://github.com/TalBarami/mmaction2)
 
 
@@ -64,7 +71,7 @@ For CMD, execute:
 ```
 
 ### Configuration File:
-Each execution of ASDPose depends on a set of customizable configurations:
+Each execution of ASDMotion depends on a set of customizable configurations:
 ```yaml
 sequence_length: Length of each sequence to be predicted by PoseC3D. Default 200.
 step_size: Step size of the sliding window that passes on the entire video. Default 30.
@@ -96,3 +103,16 @@ A directory with the name of the input video will be created. Inside it:
 ```
 
 ## Citation
+If you find this project useful in your research, please consider cite:
+```BibTeX
+@article {Barami2024.03.02.582828,
+	author = {Tal Barami and Liora Manelis-Baram and Hadas Kaiser and Michal Ilan and Aviv Slobodkin and Ofri Hadashi and Dor Hadad and Danel Waissengreen and Tanya Nitzan and Idan Menashe and Analya Michaelovsky and Michal Begin and Ditza A. Zachor and Yair Sadaka and Judah Koler and Dikla Zagdon and Gal Meiri and Omri Azencot and Andrei Sharf and Ilan Dinstein},
+	title = {Automated identification and quantification of stereotypical movements from video recordings of children with ASD},
+	elocation-id = {2024.03.02.582828},
+	year = {2024},
+	doi = {10.1101/2024.03.02.582828},
+	URL = {https://www.biorxiv.org/content/early/2024/03/06/2024.03.02.582828},
+	eprint = {https://www.biorxiv.org/content/early/2024/03/06/2024.03.02.582828.full.pdf},
+	journal = {bioRxiv}
+}
+```
