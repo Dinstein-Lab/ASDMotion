@@ -102,6 +102,11 @@ A directory with the name of the input video will be created. Inside it:
 └── <video_name>_detections.pkl - Child detection outputs, produced by the child detection module (Optional).
 ```
 
+An example of video segment where SMM is observed, along with the signal produced by the model:
+<p align="center">
+  <img src="/resources/sample.gif" alt="Example" width="500"/>
+</p>
+
 ## Citation
 If you find this project useful in your research, please consider cite:
 ```BibTeX
