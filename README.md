@@ -57,7 +57,13 @@ The child detector allows more accurate detections when the video contains multi
 > python setup.py develop
 ```
 
-## Usage
+### Download the model
+[Download the checkpoint weights here.](https://drive.google.com/file/d/1PuPXu6pfBYjz0G6NvWOEUQ_RvedvinAE/view?usp=drive_link)
+
+### Download the dataset
+[Download the dataset here.](https://drive.google.com/file/d/1MiNIhlf4mL-vRW1ub2TP3nCYzfMW0bYt/view?usp=drive_link)
+
+## Inference
 We provide both GUI and command-line applications.
 For GUI, execute:
 ```console
