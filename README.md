@@ -57,64 +57,86 @@ The child detector allows more accurate detections when the video contains multi
 > python setup.py develop
 ```
 
-### Download the model
-[Download the checkpoint weights here.](https://drive.google.com/file/d/1PuPXu6pfBYjz0G6NvWOEUQ_RvedvinAE/view?usp=drive_link)
+### Downloads
 
-### Download the dataset
-[Download the dataset here.](https://drive.google.com/file/d/1MiNIhlf4mL-vRW1ub2TP3nCYzfMW0bYt/view?usp=drive_link)
+[ASDMotion Dataset.](https://drive.google.com/file/d/1MiNIhlf4mL-vRW1ub2TP3nCYzfMW0bYt/view?usp=drive_link)
+
+[Checkpoint weights for inference.](https://drive.google.com/file/d/1PuPXu6pfBYjz0G6NvWOEUQ_RvedvinAE/view?usp=drive_link)
+
+## Training
+The entire training pipeline is managed through a forked repository of [MMAction2](https://github.com/TalBarami/mmaction2/tree/master/configs/skeleton/posec3d).
+To train ASDPose, you need to follow the MMAction2 installation process. Once MMAction2 is installed, you can initiate the training by executing the following command:
+```console
+python tools/train.py ${CONFIG_FILE} [optional arguments]
+```
+For your convenience, we provide an example configuration file within the MMAction2 repository, which can be found at `/configs/skeleton/posec3d/asdmotion.py`. 
+This configuration file is tailored specifically for training ASDPose and includes all the necessary parameters and settings to get you started efficiently.
 
 ## Inference
-We provide both GUI and command-line applications.
-For GUI, execute:
+You can test the model on a pre-defined skeleton dataset using the [MMAction2](https://github.com/TalBarami/mmaction2/tree/master/configs/skeleton/posec3d) repository. To do this, execute the following command:
+
+```console
+python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE} [optional arguments]
+```
+
+In addition to testing, we provide tools for extracting a skeletal representation from a video and creating a dataset file. This dataset corresponds to a sliding window that iterates over the video and classifies each segment as either containing a stereotypical motor movement (SMM) or not.
+
+We offer both graphical user interface (GUI) and command-line interface (CMD) applications for this task.
+
+To use the GUI, execute:
 ```console
 > python src/asdmotion/app/main_app.py
 ```
-Ensure the configuration file `/resources/config/config.yaml` contains the paths to OpenPose and MMAction2.
+Ensure that the configuration file located at `/resources/config/config.yaml` contains the correct paths to OpenPose and MMAction2.
 
-For CMD, execute:
+To use the CMD application, execute:
 ```console
 > python src/asdmotion/detector/detector.py -cfg "<path_to_config_file>" -video "<path_to_video_file>" -out "<path_to_outputs_directory>"
 ```
 
 ### Configuration File:
-Each execution of ASDMotion depends on a set of customizable configurations:
+Each execution of ASDMotion relies on a set of customizable configurations, which can be specified as follows:
+
 ```yaml
-sequence_length: Length of each sequence to be predicted by PoseC3D. Default 200.
-step_size: Step size of the sliding window that passes on the entire video. Default 30.
-model_name: Name of the model inside resources/models directory Default 'asdmotion'.
-classification_threshold: Threshold to classify an action as either SMM or not. Default 0.85.
-child_detection: Will use YOLOv5 child detection module to detect the child per video frame. Default true .
-num_person_in: Maximum number of people in each video frame. Default 5.
-num_person_out: Maximum number of people in each skeleton sequence. Default 5.
-open_pose_path: Path to openpose root directory.
-mmaction_path: Path to mmaction2 root directory.
-mmlab_python_path: Path to open-mmlab python executable.
+sequence_length: Length of each sequence to be predicted by PoseC3D. Default is 200.
+step_size: Step size of the sliding window that processes the entire video. Default is 30.
+model_name: Name of the model inside the resources/models directory. Default is 'asdmotion'.
+classification_threshold: Threshold to classify an action as either SMM or not. Default is 0.85.
+child_detection: Utilizes the YOLOv5 child detection module to detect the child in each video frame. Default is true.
+num_person_in: Maximum number of people in each video frame. Default is 5.
+num_person_out: Maximum number of people in each skeleton sequence. Default is 5.
+open_pose_path: Path to the OpenPose root directory.
+mmaction_path: Path to the MMAction2 root directory.
+mmlab_python_path: Path to the OpenMMLab Python executable.
 ```
-If you use this repository for the first time, make sure to update the 
+
+If you are using this repository for the first time, ensure to update the configuration file with the appropriate paths and settings.
 
 ### Outputs:
-A directory with the name of the input video will be created. Inside it:
+
+Upon execution, a directory named after the input video will be created. Inside this directory, you will find the following structure:
+
 ```yaml
 ├── asdmotion
 │   ├── asdmotion.pth
-│   │   ├──  <video_name>_annotations.csv - A table with start time, end time, movement type and stereotypical score of each segment.
-│   │   ├──  <video_name>_conclusion.csv - Summarize the annotations table with the sum of lengths of SMMs, the proportion of SMMs, the number of SMM segments, and the number of SMMs per minute.
+│   │   ├──  <video_name>_annotations.csv - A table with start time, end time, movement type, and stereotypical score of each segment.
+│   │   ├──  <video_name>_conclusion.csv - Summarizes the annotations table with the total length of SMMs, the proportion of SMMs, the number of SMM segments, and the number of SMMs per minute.
 │   │   ├──  <video_name>_exec_info.yaml - Configuration file containing execution information.
 │   │   ├──  <video_name>_binary_config.py - Configuration file used to execute PoseC3D.
-│   │   ├──  <video_name>_predictions.pkl & <video_name>_scores.pkl - A per-sequence scores produced by PoseC3D for each sequence of <sequence_length> length while iterating over the entire video with step size <step_size>.
+│   │   ├──  <video_name>_predictions.pkl & <video_name>_scores.pkl - Per-sequence scores produced by PoseC3D for each sequence of <sequence_length> length while iterating over the entire video with step size <step_size>.
 │   │   └──  <video_name>_dataset_<sequence_length>.pkl - Skeleton sequences that were fed to PoseC3D.
-│   ├── <video_name>raw.pkl - The skeleton sequence openpose produces.
+│   ├── <video_name>raw.pkl - The skeleton sequence produced by OpenPose.
 │   └── <video_name>.pkl - The skeleton sequence after the matching process with the child detection module.
-└── <video_name>_detections.pkl - Child detection outputs, produced by the child detection module (Optional).
+└── <video_name>_detections.pkl - Child detection outputs produced by the child detection module (optional).
 ```
 
-An example of video segment where SMM is observed, along with the signal produced by the model:
+An example of a video segment where SMM is observed, along with the signal produced by the model:
 <p align="center">
   <img src="/resources/sample.gif" alt="Example" width="500"/>
 </p>
 
 ## Citation
-If you find this project useful in your research, please consider cite:
+If you find this project useful in your research, please consider citing:
 ```BibTeX
 @article {Barami2024.03.02.582828,
 	author = {Tal Barami and Liora Manelis-Baram and Hadas Kaiser and Michal Ilan and Aviv Slobodkin and Ofri Hadashi and Dor Hadad and Danel Waissengreen and Tanya Nitzan and Idan Menashe and Analya Michaelovsky and Michal Begin and Ditza A. Zachor and Yair Sadaka and Judah Koler and Dikla Zagdon and Gal Meiri and Omri Azencot and Andrei Sharf and Ilan Dinstein},
