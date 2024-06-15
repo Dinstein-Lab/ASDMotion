@@ -67,13 +67,13 @@ The child detector allows more accurate detections when the video contains multi
 We provide both GUI and command-line applications.
 For GUI, execute:
 ```console
-> python src/jordi/app/main_app.py
+> python src/asdmotion/app/main_app.py
 ```
 Ensure the configuration file `/resources/config/config.yaml` contains the paths to OpenPose and MMAction2.
 
 For CMD, execute:
 ```console
-> python src/jordi/detector/detector.py -cfg "<path_to_config_file>" -video "<path_to_video_file>" -out "<path_to_outputs_directory>"
+> python src/asdmotion/detector/detector.py -cfg "<path_to_config_file>" -video "<path_to_video_file>" -out "<path_to_outputs_directory>"
 ```
 
 ### Configuration File:
