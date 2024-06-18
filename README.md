@@ -69,6 +69,14 @@ To train ASDPose, you need to follow the MMAction2 installation process. Once MM
 ```console
 python tools/train.py ${CONFIG_FILE} [optional arguments]
 ```
+
+Example:
+```console
+python tools/train.py configs/skeleton/posec3d/asdmotion.py \
+    --work-dir work_dirs/asdmotion \
+    --validate --seed 0 --deterministic
+```
+
 For your convenience, we provide an example configuration file within the MMAction2 repository, which can be found at `/configs/skeleton/posec3d/asdmotion.py`. 
 This configuration file is tailored specifically for training ASDPose and includes all the necessary parameters and settings to get you started efficiently.
 
