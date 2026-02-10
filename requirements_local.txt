@@ -1,0 +1,41 @@
+# ASDMotion - Clean pip-installable requirements for local setup
+# Tested with Python 3.9 (recommended), should also work with 3.10/3.11
+
+# Deep learning
+torch>=1.13.0,<2.3.0
+torchvision>=0.14.0,<0.18.0
+torchaudio>=0.13.0,<2.3.0
+
+# Computer vision
+opencv-python>=4.5.0,<5.0.0
+
+# Video processing
+ffmpeg-python==0.2.0
+
+# Scientific computing
+numpy>=1.23.0,<2.0.0
+pandas>=1.5.0,<3.0.0
+scipy>=1.9.0,<2.0.0
+scikit-learn>=1.1.0
+
+# Configuration
+omegaconf>=2.2.0
+PyYAML>=5.4
+
+# Visualization
+matplotlib>=3.5.0
+seaborn>=0.12.0
+Pillow>=9.0.0
+
+# Utilities
+tqdm>=4.60.0
+requests>=2.25.0
+
+# MMAction2 dependency (needed for config loading in preprocess.py)
+# mmcv is installed separately - see LOCAL_SETUP.md
+
+# Child detector (YOLOv5-based) - optional
+# git+https://github.com/TalBarami/Child-Detector.git
+
+# Skeleton tools
+# git+https://github.com/TalBarami/SkeletonTools.git

@@ -75,7 +75,12 @@ class OpenposeInitializer:
 
         cwd = os.getcwd()
         os.chdir(self.open_pose_path)
-        cmd = f'build_windows/x64/Release/OpenPoseDemo.exe {args}' if osp.exists('build_windows') else f'bin/OpenPoseDemo.exe {args}'
+        if osp.exists('build_windows'):
+            cmd = f'build_windows/x64/Release/OpenPoseDemo.exe {args}'
+        elif osp.exists('build/examples/openpose/openpose.bin'):
+            cmd = f'build/examples/openpose/openpose.bin {args}'
+        else:
+            cmd = f'bin/OpenPoseDemo.exe {args}'
         logger.info(f'Executing: {cmd}')
         try:
             subprocess.check_call(shlex.split(cmd), universal_newlines=True)

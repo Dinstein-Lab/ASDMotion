@@ -1,0 +1,25 @@
+# =============================================================================
+# ASDMotion - Docker Compose
+# =============================================================================
+# Usage:
+#   1. Place your video in the ./videos/ folder
+#   2. Run: docker compose run asdmotion /data/input/YOUR_VIDEO.mp4
+#   3. Results appear in ./output/
+# =============================================================================
+
+services:
+  asdmotion:
+    build: .
+    image: asdmotion:latest
+    volumes:
+      # Mount your videos folder
+      - ./videos:/data/input:ro
+      # Mount output folder (results will be saved here)
+      - ./output:/data/output
+      # Mount model weights (persistent across container restarts)
+      - ./resources/models:/app/resources/models
+    # Uncomment below to set memory limit (recommended: at least 8GB)
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 8G

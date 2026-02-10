@@ -1,0 +1,10 @@
+.git
+deps/
+resources/models/*.pth
+resources/models/*.pt
+resources/runs/
+resources/logs/*.log
+__pycache__
+*.pyc
+.venv
+venv

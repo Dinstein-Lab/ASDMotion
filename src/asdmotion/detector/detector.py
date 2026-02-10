@@ -1,3 +1,4 @@
+import platform
 import shlex
 import subprocess
 from os import path as osp
@@ -10,6 +11,7 @@ from asdmotion.logger import LogManager
 from asdmotion.utils import RESOURCES_ROOT, read_pkl
 
 MODELS_DIR = osp.join(RESOURCES_ROOT, 'models')
+RUN_IN_ENV = osp.join(RESOURCES_ROOT, 'run_in_env.bat' if platform.system() == 'Windows' else 'run_in_env.sh')
 logger = LogManager.APP_LOGGER
 
 
@@ -32,7 +34,7 @@ class Predictor:
             cmd = f'python "{osp.join(self.mmaction_root, "tools", "test.py")}" "{cfg_path}" "{model_path}" --out "{out_exec}"'
             if self.gpu_id is not None:
                 cmd += f" --gpu-ids {self.gpu_id}"
-            cmd = f'{osp.join(RESOURCES_ROOT, "run_in_env.bat")} {cmd}'.replace('\\', '/')
+            cmd = f'{RUN_IN_ENV} {cmd}'.replace('\\', '/')
             logger.info(f'Executing: {cmd}')
             subprocess.check_call(shlex.split(cmd), universal_newlines=True)
             logger.info('Prediction complete successfully.')
